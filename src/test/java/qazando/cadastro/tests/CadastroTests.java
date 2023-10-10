@@ -5,7 +5,7 @@ import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.concurrent.TimeUnit;
-import qazando.cadastro.pages.RegistroPage;
+import qazando.cadastro.pages.CadastroPage;
 import qazando.cadastro.pages.HomePage;
 import qazando.cadastro.pages.ValidarTextoPage;
 
@@ -28,13 +28,11 @@ public class CadastroTests {
     @Test
     @DisplayName("Registrar um novo usuário com dados válidos")
     public void testCadastrarNovoUsuarioComDadosValidos() {
-        HomePage homePage = new HomePage(browser);
-        homePage.acessarPaginaPrincipal();
-        homePage.abrirPaginaCadastro();
-        RegistroPage registroPage = new RegistroPage(browser);
-        registroPage.cadastroNovoUsuario("Melissa", "melissa@gmail.com", "12345678");
-        ValidarTextoPage validarTextoPage = new ValidarTextoPage(browser);
-        String confirmar = validarTextoPage.reconhecerTexto();
+        String confirmar = new HomePage(browser)
+                .acessarPaginaPrincipal()
+                .abrirPaginaCadastro()
+                .cadastrarNovoUsuario("Melissa", "melissa@gmail.com", "12345678")
+                .reconhecerTexto();
         Assertions.assertEquals("Cadastro realizado!", confirmar);
     }
 }

@@ -2,21 +2,26 @@ package qazando.cadastro.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import qazando.cadastro.BasePage;
 
 public class HomePage extends BasePage {
-    private By localizadorBotaoCadastro = By.linkText("Cadastro");
+    @FindBy(linkText = "Cadastro")
+    private WebElement botaoCadastro;
 
     public HomePage(WebDriver browser) {
         super(browser);
     }
 
-    public void acessarPaginaPrincipal() {
+    public HomePage acessarPaginaPrincipal() {
         browser.get("https://automationpratice.com.br/");
+        return new HomePage(browser);
     }
 
-    public void abrirPaginaCadastro() {
-        browser.findElement(localizadorBotaoCadastro).click();
+    public CadastroPage abrirPaginaCadastro() {
+        botaoCadastro.click();
+        return new CadastroPage(browser);
     }
 }
 

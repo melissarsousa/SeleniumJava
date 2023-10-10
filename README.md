@@ -1,4 +1,4 @@
-# SeleniumJavaj
+# SeleniumJava
 Automatização de testes em Java com Selenium Webdriver, aplicando o conceito de Page Objects, Page Factory e Fluent Pages.
 
 Passos seguidos:
